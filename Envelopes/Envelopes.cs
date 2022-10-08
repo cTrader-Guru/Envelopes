@@ -9,6 +9,8 @@ namespace cAlgo
     public class Envelopes : Indicator
     {
 
+        [Parameter()]
+        public DataSeries Source { get; set; }
 
         [Parameter(DefaultValue = 14)]
         public int Period { get; set; }
@@ -33,7 +35,7 @@ namespace cAlgo
         protected override void Initialize()
         {
 
-            _movingAverage = Indicators.MovingAverage(Bars.ClosePrices, Period, MAType);
+            _movingAverage = Indicators.MovingAverage(Source, Period, MAType);
 
         }
 
